@@ -10,3 +10,7 @@
   --font-poppins: "Poppins";
   --font-playfair: "Playfair Display"
 }
+body {
+  background-color: #111827;
+  color: #fff;
+}
