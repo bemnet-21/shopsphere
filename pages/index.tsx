@@ -23,7 +23,7 @@ const Home = () => {
   fetchProducts()
   }, [])
   return (
-    <main className='bg-darkBlue text-white font-poppins font-light px-5 grid grid-cols-1'>
+    <section className='bg-darkBlue text-white font-poppins font-light px-5 grid grid-cols-1'>
       {products.map((product)=>(
         <ProductCard key={product.id}
         id={product.id}
@@ -34,7 +34,7 @@ const Home = () => {
         category={product.category}
         rating={product.rating} />
       ))}
-    </main>
+    </section>
   )
 }
 
