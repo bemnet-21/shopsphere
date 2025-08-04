@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { ProductProps } from '@/interface'
 import ProductCard from '@/components/ProductCard'
 import CategoryModal from '@/components/modal/CategoryModal'
+import MenuModal from '@/components/modal/MenuModal'
 
 
 const Home = () => {
@@ -24,6 +25,7 @@ const Home = () => {
   }, [])
 
   const [categoryModalVisibilty, setCategoryModalVisibilty] = useState<boolean>(false)
+  
   return (
     <>
       <button className='display-block bg-softBlue text-white text-2xl rounded-xl mx-5 my-4 px-4 py-2 w-fit cursor-pointer'
@@ -45,6 +47,7 @@ const Home = () => {
       </section>
       <CategoryModal isVisible={categoryModalVisibilty}
       onClose={() => setCategoryModalVisibilty(false)} />
+      
 
     </>
   )

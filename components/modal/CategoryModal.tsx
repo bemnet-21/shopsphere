@@ -1,8 +1,8 @@
-import { CategoryModalProps } from '@/interface'
+import { ModalProps } from '@/interface'
 import React, { useState } from 'react'
 import { FaX } from 'react-icons/fa6'
 
-const CategoryModal: React.FC<CategoryModalProps> = ({
+const CategoryModal: React.FC<ModalProps> = ({
   isVisible,
   onClose
 }) => {
@@ -28,7 +28,6 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
     onClose()
   }
 
-  console.log("selected: ",selected)
   if (!isVisible) return null
 
   return (
@@ -41,7 +40,7 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
         {category.map(item => (
           <label key={item}>
             <input
-              className='mr-1 accent-green-500'
+              className='mr-1 accent-green-500 outline-0'
               type='checkbox'
               checked={tempSelected.includes(item)}
               value={item} 
@@ -51,7 +50,7 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
           </label>
         ))}
         </div>
-        <button className='bg-mainOrange w-fit px-4 py-1 rounded-2xl place-self-center cursor-pointer'
+        <button className='bg-mainOrange w-full font-bold text-xl px-4 py-1 rounded-2xl place-self-center cursor-pointer'
         onClick={handleApply}>Apply</button>
       </div>
     </div>

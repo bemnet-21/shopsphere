@@ -33,7 +33,7 @@ export interface ProductProps {
 }
 export type ProductCardProps = Pick<ProductProps, 'id' | 'title' | 'category' | 'price' | 'stock' | 'rating' | 'thumbnail' >
 
-export interface CategoryModalProps {
+export interface ModalProps {
   isVisible: boolean
   onClose: () => void
 }
