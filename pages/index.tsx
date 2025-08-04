@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ProductProps } from '@/interface'
 import ProductCard from '@/components/ProductCard'
+import CategoryModal from '@/components/modal/CategoryModal'
 
 
 const Home = () => {
@@ -13,8 +14,7 @@ const Home = () => {
 
       const data = await response.json()
       setProducts(data.products)
-      console.log(data.products)
-      
+
     } catch (err) {
       console.error("Error: ", err)
     }
@@ -22,9 +22,13 @@ const Home = () => {
 
   fetchProducts()
   }, [])
+
+  const [categoryModalVisibilty, setCategoryModalVisibilty] = useState<boolean>(false)
   return (
     <>
-      <button className='display-block bg-softBlue text-white text-2xl rounded-xl mx-5 my-4 px-4 py-2 w-fit sm:hidden'>
+      <button className='display-block bg-softBlue text-white text-2xl rounded-xl mx-5 my-4 px-4 py-2 w-fit cursor-pointer'
+      onClick={() => setCategoryModalVisibilty(true)}
+      >
         Filters
       </button>
       <section className=' font-poppins font-light px-5 grid grid-cols-1'>
@@ -39,6 +43,9 @@ const Home = () => {
           rating={product.rating} />
         ))}
       </section>
+      <CategoryModal isVisible={categoryModalVisibilty}
+      onClose={() => setCategoryModalVisibilty(false)} />
+
     </>
   )
 }

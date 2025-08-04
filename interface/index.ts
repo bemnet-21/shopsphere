@@ -32,3 +32,8 @@ export interface ProductProps {
   warrantyInformation: string
 }
 export type ProductCardProps = Pick<ProductProps, 'id' | 'title' | 'category' | 'price' | 'stock' | 'rating' | 'thumbnail' >
+
+export interface CategoryModalProps {
+  isVisible: boolean
+  onClose: () => void
+}
