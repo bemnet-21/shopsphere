@@ -30,7 +30,7 @@ const ProductDetail = ({product} : {product: ProductDetailProps}) => {
   console.log(images)
   
   return (
-    <section className='flex flex-col items-center mt-16 gap-y-6 px-5 pb-12 md:px-64'>
+    <section className='flex flex-col items-center mt-16 gap-y-6 px-5 pb-12 sm:px-16 md:px-32 lg:px-64'>
       <div className='bg-mainOrange px-4 py-1 rounded-xl w-fit text-xl text-center'>{product.title}</div>
       <div>
         <div className='relative w-72 h-72 bg-softBlue rounded-xl border border-lightBlue'>
@@ -61,8 +61,8 @@ const ProductDetail = ({product} : {product: ProductDetailProps}) => {
       </div>
       </div>
       <div className='flex flex-col items-center w-full gap-y-3 text-xl'>
-        <button className='bg-mainOrange w-9/10 py-1 rounded-xl'>Add to Cart</button>
-        <button className='border border-mainOrange text-mainOrange w-9/10 py-1 rounded-xl'>Buy Now</button>
+        <button className='bg-mainOrange w-9/10 py-1 rounded-xl sm:w-1/2 md:w-1/4'>Add to Cart</button>
+        <button className='border border-mainOrange text-mainOrange w-9/10 py-1 rounded-xl sm:w-1/2 md:w-1/4'>Buy Now</button>
       </div>
       <div className='bg-softBlue flex flex-col gap-y-3 p-3.5 rounded-xl w-full'>
         <div className='bg-mainOrange px-4 rounded-xl w-fit text-xl'>More Info</div>

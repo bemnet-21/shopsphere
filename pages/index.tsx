@@ -29,7 +29,7 @@ const Home = () => {
   
   return (
     <>
-      <button className='display-block bg-softBlue text-white text-2xl rounded-xl mx-5 my-4 px-4 py-2 w-fit cursor-pointer'
+      <button className='display-block bg-softBlue text-white text-2xl rounded-xl mx-5 my-4 px-4 py-2 w-fit cursor-pointer md:hidden'
       onClick={() => setCategoryModalVisibilty(true)}
       >
         Filters

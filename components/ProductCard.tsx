@@ -12,7 +12,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     thumbnail
 }) => {
   return (
-    <div className='w-full  bg-softBlue border border-lightBlue rounded-2xl flex px-4 py-5 gap-x-4 mb-4 sm:w-96'>
+    <div className='w-full  bg-softBlue border border-lightBlue rounded-2xl flex px-4 py-5 gap-x-4 mb-4 md:w-96'>
         <div className='relative bg-darkBlue rounded-xl w-36  flex-shrink-0'>
             <Image src={thumbnail}
             alt='thumbnail'
