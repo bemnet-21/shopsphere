@@ -11,6 +11,7 @@
   --font-playfair: "Playfair Display"
 }
 body {
-  background-color: #111827;
+  background-color: var(--color-darkBlue);
   color: #fff;
+  font-family: var(--font-poppins);
 }

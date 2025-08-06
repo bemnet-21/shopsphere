@@ -3,6 +3,7 @@ import { ProductProps } from '@/interface'
 import ProductCard from '@/components/ProductCard'
 import CategoryModal from '@/components/modal/CategoryModal'
 import MenuModal from '@/components/modal/MenuModal'
+import Link from 'next/link'
 
 
 const Home = () => {
@@ -35,15 +36,18 @@ const Home = () => {
       </button>
       <section className=' font-poppins font-light px-5 grid grid-cols-1'>
         {products.map((product)=>(
-          <ProductCard key={product.id}
-          id={product.id}
-          title={product.title}
-          thumbnail={product.thumbnail}
-          stock={product.stock}
-          price={product.price}
-          category={product.category}
-          rating={product.rating} />
-        ))}
+          <Link href={`/product/${product.id}`}>
+            <ProductCard key={product.id}
+            id={product.id}
+            title={product.title}
+            thumbnail={product.thumbnail}
+            stock={product.stock}
+            price={product.price}
+            category={product.category}
+            rating={product.rating} />
+          </Link>
+        ) 
+        )}
       </section>
       <CategoryModal isVisible={categoryModalVisibilty}
       onClose={() => setCategoryModalVisibilty(false)} />

@@ -20,7 +20,7 @@ export interface ProductProps {
   category: string
   description: string
   discountPercentage: number
-  images: string[] | string
+  images: string[]
   minimumOrderQuantity: number
   price: number
   rating: number
@@ -32,6 +32,7 @@ export interface ProductProps {
   warrantyInformation: string
 }
 export type ProductCardProps = Pick<ProductProps, 'id' | 'title' | 'category' | 'price' | 'stock' | 'rating' | 'thumbnail' >
+export type ProductDetailProps = Pick<ProductProps, 'id' | 'title' | 'brand' | 'description' | 'discountPercentage' | 'images' | 'price' | 'stock' | 'warrantyInformation' | 'shippingInformation' | 'returnPolicy' | 'rating' | 'reviews'>
 
 export interface ModalProps {
   isVisible: boolean
