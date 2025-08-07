@@ -34,9 +34,9 @@ const Home = () => {
       >
         Filters
       </button>
-      <section className=' font-poppins font-light px-5 grid grid-cols-1'>
+      <section className='font-light pt-10 px-5 grid grid-cols-1 gap-4 pl-15 w-full md:grid-cols-2 lg:grid-cols-3 md:h-screen md:-z-0'>
         {products.map((product)=>(
-          <Link href={`/product/${product.id}`}>
+          <Link href={`/product/${product.id}`} className='md:w-fit md:h-fit'>
             <ProductCard key={product.id}
             id={product.id}
             title={product.title}
