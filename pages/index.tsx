@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
+import { ClipLoader } from 'react-spinners'
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
   const productPerPage = 30
   const [currentPage, setCurrentPage] = useState(1)
   const [totalProducts, setTotalProducts] = useState(0)
+  const [loading, setLoading] = useState(false)
 
   const totalPage = Math.ceil(totalProducts / productPerPage)
 
@@ -29,6 +31,7 @@ const Home = () => {
     const fetchProducts = async () => {
     try {
 
+      setLoading(true)
       const skip = (currentPage - 1) * productPerPage
       const response  = await fetch(`https://dummyjson.com/products?limit=${productPerPage}&skip=${skip}`)
       if(!response.ok) throw new Error('Failed to Fetch Products')
@@ -39,6 +42,8 @@ const Home = () => {
 
     } catch (err) {
       console.error("Error: ", err)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -48,7 +53,8 @@ const Home = () => {
   const [categoryModalVisibilty, setCategoryModalVisibilty] = useState<boolean>(false)
   const userSelectedCategory = useSelector((state: RootState) => state.categoriesState.selected)
   const priceOrder = useSelector((state: RootState) => state.priceState.order)
-  // Filter products based on selected categories
+
+
   const categoryFiltered = userSelectedCategory.length > 0
     ? allproducts.filter(product => userSelectedCategory.includes(product.category))
     : allproducts;
@@ -59,6 +65,11 @@ const Home = () => {
     categoryFiltered.sort((a, z) => z.price - a.price)
   }
   
+  if (loading) return (
+    <div className='w-full h-screen flex justify-center items-center'>
+      <ClipLoader color='#fff' size={200} />
+    </div>
+  )
   return (
     <>
       <button className='display-block bg-softBlue text-white text-2xl rounded-xl mx-5 my-4 px-4 py-2 w-fit cursor-pointer lg:hidden'
