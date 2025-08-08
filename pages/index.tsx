@@ -4,18 +4,38 @@ import ProductCard from '@/components/ProductCard'
 import CategoryModal from '@/components/modal/CategoryModal'
 import MenuModal from '@/components/modal/MenuModal'
 import Link from 'next/link'
+import { BiChevronLeft, BiChevronRight } from 'react-icons/bi'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 
 
 const Home = () => {
-  const [products, setProducts] = useState<ProductProps[]>([])
+  const [allproducts, setallProducts] = useState<ProductProps[]>([])
+  const productPerPage = 30
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalProducts, setTotalProducts] = useState(0)
+
+  const totalPage = Math.ceil(totalProducts / productPerPage)
+
+  const handlePrev = () => {
+    setCurrentPage(prev => Math.max((prev - 1), 1))
+  }
+  const handleNext = () => {
+    setCurrentPage(prev => Math.min((prev + 1), totalPage))
+  }
+
+
   useEffect(() => {
     const fetchProducts = async () => {
     try {
-      const response  = await fetch('https://dummyjson.com/products')
-      if(!response.ok) throw new Error('Failed to Fetch Products')
 
+      const skip = (currentPage - 1) * productPerPage
+      const response  = await fetch(`https://dummyjson.com/products?limit=${productPerPage}&skip=${skip}`)
+      if(!response.ok) throw new Error('Failed to Fetch Products')
+      
       const data = await response.json()
-      setProducts(data.products)
+      setallProducts(data.products)
+      setTotalProducts(data.total)
 
     } catch (err) {
       console.error("Error: ", err)
@@ -23,32 +43,48 @@ const Home = () => {
   }
 
   fetchProducts()
-  }, [])
+  }, [currentPage])
 
   const [categoryModalVisibilty, setCategoryModalVisibilty] = useState<boolean>(false)
+  const userSelectedCategory = useSelector((state: RootState) => state.categoriesState.selected)
+  
+  // Filter products based on selected categories
+  const categoryFiltered = userSelectedCategory.length > 0
+    ? allproducts.filter(product => userSelectedCategory.includes(product.category))
+    : allproducts;
   
   return (
     <>
-      <button className='display-block bg-softBlue text-white text-2xl rounded-xl mx-5 my-4 px-4 py-2 w-fit cursor-pointer md:hidden'
+      <button className='display-block bg-softBlue text-white text-2xl rounded-xl mx-5 my-4 px-4 py-2 w-fit cursor-pointer lg:hidden'
       onClick={() => setCategoryModalVisibilty(true)}
       >
         Filters
       </button>
-      <section className='font-light pt-10 px-5 grid grid-cols-1 gap-4 pl-15 w-full md:grid-cols-2 lg:grid-cols-3 md:h-screen md:-z-0'>
-        {products.map((product)=>(
-          <Link href={`/product/${product.id}`} className='md:w-fit md:h-fit'>
-            <ProductCard key={product.id}
-            id={product.id}
-            title={product.title}
-            thumbnail={product.thumbnail}
-            stock={product.stock}
-            price={product.price}
-            category={product.category}
-            rating={product.rating} />
-          </Link>
-        ) 
-        )}
-      </section>
+      <div className='md:h-screen'>
+        <section className='font-light pt-10 px-5 grid grid-cols-1 gap-4 pl-15 w-full md:grid-cols-2 lg:grid-cols-3  md:-z-0 '>
+          {
+            categoryFiltered.map((product)=>(
+              <Link href={`/product/${product.id}`} className='md:w-fit md:h-fit'>
+                <ProductCard key={product.id}
+                  id={product.id}
+                  title={product.title}
+                  thumbnail={product.thumbnail}
+                  stock={product.stock}
+                  price={product.price}
+                  category={product.category}
+                  rating={product.rating} />
+              </Link>
+            ))
+          }
+        </section>
+        <div className='flex gap-x-4 items-center place-self-center py-10'>
+          <BiChevronLeft className='text-4xl cursor-pointer hover:bg-lightBlue hover:rounded-full' onClick={handlePrev}/>
+          <span>
+            {`Page ${currentPage} of ${totalPage}`}
+          </span>
+          <BiChevronRight className='text-4xl cursor-pointer hover:bg-lightBlue hover:rounded-full' onClick={handleNext}/>
+        </div>
+      </div>
       <CategoryModal isVisible={categoryModalVisibilty}
       onClose={() => setCategoryModalVisibilty(false)} />
       

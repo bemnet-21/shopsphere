@@ -8,7 +8,7 @@ const Header = () => {
   const [menuModalVisibilty, setmenuModalVisibilty] = useState<boolean>(false)
 
   return (
-    <header className='w-full h-21 bg-darkBlue border-b border-b-lightBlue font-playfair px-5 flex justify-between items-center '>
+    <header className='w-full h-21 bg-darkBlue border-b border-b-lightBlue font-playfair px-5 flex justify-between items-center z-15'>
       <Link href='/'>
         <div className='text-4xl'>ShopSphere</div>
       </Link>

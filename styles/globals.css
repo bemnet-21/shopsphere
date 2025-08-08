@@ -19,3 +19,25 @@ body {
   color: #fff;
   font-family: var(--font-poppins);
 }
+.scrollbar-hidden {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+.scrollbar-container::-webkit-scrollbar {
+  width: 8px;
+  /* Note: background-color on the main scrollbar element often has
+     no visible effect. It's better to style the track instead. */
+}
+
+/* 
+  2. Style the track (the background the thumb slides on)
+     The selector is ".scrollbar-container ::-webkit-scrollbar-track"
+*/
+.scrollbar-container::-webkit-scrollbar-track {
+  background: var(--color-lightBlue); /* e.g., a light blue color */
+  border-radius: 4px; /* It's better to round the track and thumb */
+}

@@ -3,8 +3,9 @@ import Image from 'next/image'
 import React from 'react'
 import { FaStar } from 'react-icons/fa6'
 
+const total = 194
 export async function getStaticPaths() {
-  const response = await fetch('https://dummyjson.com/products')
+  const response = await fetch('https://dummyjson.com/products?limit=194')
   const data = await response.json()
 
   const paths = data.products.map((product: ProductDetailProps) => (
@@ -44,6 +45,7 @@ const ProductDetail = ({product} : {product: ProductDetailProps}) => {
         {images.map((image, index) => (
           <div className='hidden relative w-72 h-72'>
             <Image
+              key={index}
               src={image}
               alt={`${product.title} image - ${index}`}
               fill />
@@ -90,10 +92,11 @@ const ProductDetail = ({product} : {product: ProductDetailProps}) => {
           </div>
         </div>
         {
-          product.reviews.map((review) => (
+          product.reviews.map((review, index) => (
             <div className='flex border-t border-lightBlue pt-2 gap-x-3'>
               <div className='relative w-16 h-16'>
                 <Image
+                  key={index}
                   src={`/assets/Generic avatar.png`}
                   alt='avatar'
                   fill />
