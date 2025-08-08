@@ -47,11 +47,17 @@ const Home = () => {
 
   const [categoryModalVisibilty, setCategoryModalVisibilty] = useState<boolean>(false)
   const userSelectedCategory = useSelector((state: RootState) => state.categoriesState.selected)
-  
+  const priceOrder = useSelector((state: RootState) => state.priceState.order)
   // Filter products based on selected categories
   const categoryFiltered = userSelectedCategory.length > 0
     ? allproducts.filter(product => userSelectedCategory.includes(product.category))
     : allproducts;
+
+  if (priceOrder === 'Ascending') {
+    categoryFiltered.sort((a, z) => a.price - z.price)
+  } else if (priceOrder == 'Descending') {
+    categoryFiltered.sort((a, z) => z.price - a.price)
+  }
   
   return (
     <>

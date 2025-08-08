@@ -1,5 +1,6 @@
 import { AppDispatch, RootState } from '@/store'
 import { addCategory } from '@/store/category/categorySlice'
+import { setAsc, setDesc } from '@/store/price/priceSlice'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { useState, useEffect } from 'react'
@@ -10,6 +11,7 @@ import { useSelector } from 'react-redux'
 const SideBar = () => {
     const router = useRouter()
     const selectedState = useSelector((state: RootState) => state.categoriesState.selected)
+    const priceOrder = useSelector((state: RootState) => state.priceState.order)
     const dispatch = useDispatch()
 
     const [tempSelected, setTempSelected] = useState<string[]>([])
@@ -34,7 +36,6 @@ const SideBar = () => {
         dispatch(addCategory(tempSelected))
     }
 
-    console.log("Redux: ", selectedState)
     if (router.pathname !== '/') return null
   return (
     <aside className='hidden flex-col w-80 h-[957px] bg-softBlue px-20 gap-y-5 pt-10 pb-30 lg:flex'>
@@ -57,15 +58,32 @@ const SideBar = () => {
         <div className='text-4xl'>Price</div>
         <div className='flex flex-col'>
             <label>
-                <input type='radio'
-                name='price' 
-                className='transform scale-120 accent-green-500 mr-2' />
+                <input
+                    type='radio'
+                    name='price'
+                    value=''
+                    checked
+                    className='transform scale-120 accent-green-500 mr-2'
+                    onChange={(e) => dispatch(setAsc(e.target.value))}
+                />
+                Default
+            </label>
+            <label>
+                <input
+                    type='radio'
+                    name='price'
+                    value='Ascending'
+                    className='transform scale-120 accent-green-500 mr-2'
+                    onChange={(e) => dispatch(setAsc(e.target.value))}
+                />
                 Ascending
             </label>
             <label>
                 <input type='radio'
                 name='price'
-                className='transform scale-120 accent-green-500 mr-2'  />
+                value='Descending'
+                className='transform scale-120 accent-green-500 mr-2' 
+                onChange={(e) => dispatch(setDesc(e.target.value))} />
                 Descending
             </label>
         </div>
