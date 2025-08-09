@@ -19,7 +19,7 @@ const Header = () => {
         className='bg-lightBlue w-40 p-2 rounded-full outline-0 font-poppins md:w-80 lg:w-lg' />
       </div>
       <div className='hidden text-lg justify-between sm:flex sm:w-32 md:w-2/10 lg:w-36'>
-        <div>Login</div>
+        <Link href='/cart'>Login</Link>
         <div>Sign UP</div>
       </div>
       <MenuModal 

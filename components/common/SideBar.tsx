@@ -48,7 +48,7 @@ const SideBar = () => {
                         value={item}
                         checked={tempSelected.includes(item)}
                         onChange={(e) => handleChange(e.target.value)} 
-                        className='accent-green-500 transform scale-170'/>
+                        className='accent-mainOrange transform scale-170'/>
                         <div className=''>{item.toUpperCase()}</div>
                         
                     </label>
@@ -62,8 +62,8 @@ const SideBar = () => {
                     type='radio'
                     name='price'
                     value=''
-                    checked
-                    className='transform scale-120 accent-green-500 mr-2'
+                    
+                    className='transform scale-120 accent-mainOrange mr-2'
                     onChange={(e) => dispatch(setAsc(e.target.value))}
                 />
                 Default
@@ -73,18 +73,18 @@ const SideBar = () => {
                     type='radio'
                     name='price'
                     value='Ascending'
-                    className='transform scale-120 accent-green-500 mr-2'
+                    className='transform scale-120 accent-mainOrange mr-2'
                     onChange={(e) => dispatch(setAsc(e.target.value))}
                 />
-                Ascending
+                LOW To HIGH
             </label>
             <label>
                 <input type='radio'
                 name='price'
                 value='Descending'
-                className='transform scale-120 accent-green-500 mr-2' 
+                className='transform scale-120 accent-mainOrange mr-2' 
                 onChange={(e) => dispatch(setDesc(e.target.value))} />
-                Descending
+                HIGH To LOW
             </label>
         </div>
         <button onClick={handleApply}>apply</button>

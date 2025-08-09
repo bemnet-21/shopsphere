@@ -1,7 +1,12 @@
 import { ProductDetailProps } from '@/interface'
+import { RootState } from '@/store'
+import { addToCart } from '@/store/cart/cartSlice'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import { FaStar } from 'react-icons/fa6'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 const total = 194
 export async function getStaticPaths() {
@@ -27,8 +32,15 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
 
 const ProductDetail = ({product} : {product: ProductDetailProps}) => {
 
+  const cartList = useSelector((state:RootState) => state.cartState.item)
+  const dispatch = useDispatch()
+  const handleAddToCart = () => {
+    dispatch(addToCart({title: product.title, price: product.price, thumbnail: product.thumbnail }))
+  }
+  console.log("Cart: ", cartList)
+
+
   const images = product.images.filter((image) => image !== product.images[0])
-  console.log(images)
   
   return (
     <section className='flex flex-col items-center mt-16 gap-y-6 px-5 pb-12 sm:px-16 md:px-32 lg:px-64'>
@@ -58,12 +70,15 @@ const ProductDetail = ({product} : {product: ProductDetailProps}) => {
           {product.description}
         </div>        
       <div className='flex justify-between'>
-        <div className='bg-mainOrange px-4 py-1 rounded-xl w-fit text-xl'>Price: {product.price}</div>
+        <div className='bg-mainOrange px-4 py-1 rounded-xl w-fit text-xl'>Price: ${product.price}</div>
         <div className='bg-mainOrange px-4 py-1 rounded-xl w-fit text-xl'>Stock: {product.stock}</div>
       </div>
       </div>
+      <Link href='/cart'>
+        Go To Cart
+      </Link>
       <div className='flex flex-col items-center w-full gap-y-3 text-xl'>
-        <button className='bg-mainOrange w-9/10 py-1 rounded-xl sm:w-1/2 md:w-1/4'>Add to Cart</button>
+        <button className='bg-mainOrange w-9/10 py-1 rounded-xl sm:w-1/2 md:w-1/4 cursor-pointer hover:bg-amber-700 active:bg-amber-800' onClick={handleAddToCart}>Add to Cart</button>
         <button className='border border-mainOrange text-mainOrange w-9/10 py-1 rounded-xl sm:w-1/2 md:w-1/4'>Buy Now</button>
       </div>
       <div className='bg-softBlue flex flex-col gap-y-3 p-3.5 rounded-xl w-full'>
@@ -104,6 +119,7 @@ const ProductDetail = ({product} : {product: ProductDetailProps}) => {
               <div className='flex flex-col'>
                 <div>{review.reviewerName}</div>
                 <div className='text-xs font-extralight'>{review.reviewerEmail}</div>
+                <div className='text-sm font-light italic'>{review.comment}</div>
                 <div className='flex items-center'>
                   <FaStar className='text-lg text-mainOrange' />
                   <div className='text-lg'>{review.rating}</div>

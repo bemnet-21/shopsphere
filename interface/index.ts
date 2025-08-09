@@ -32,9 +32,15 @@ export interface ProductProps {
   warrantyInformation: string
 }
 export type ProductCardProps = Pick<ProductProps, 'id' | 'title' | 'category' | 'price' | 'stock' | 'rating' | 'thumbnail' >
-export type ProductDetailProps = Pick<ProductProps, 'id' | 'title' | 'brand' | 'description' | 'discountPercentage' | 'images' | 'price' | 'stock' | 'warrantyInformation' | 'shippingInformation' | 'returnPolicy' | 'rating' | 'reviews'>
+export type ProductDetailProps = Pick<ProductProps, 'id' | 'title' | 'brand' | 'description' | 'discountPercentage' | 'images' | 'price' | 'stock' | 'warrantyInformation' | 'shippingInformation' | 'returnPolicy' | 'rating' | 'reviews' | 'thumbnail'>
 
 export interface ModalProps {
   isVisible: boolean
   onClose: () => void
+}
+
+export interface CartCardProps {
+  thumbnail: string
+  title: string
+  price: number
 }
