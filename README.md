@@ -86,25 +86,3 @@ To run this project locally, follow these steps:
 4.  **Open your browser:**
     Navigate to [http://localhost:3000](http://localhost:3000) to see the application in action.
 
----
-
-## 📂 Project Structure
-
-The project follows a standard Next.js structure, organized for clarity and scalability.
-
-├── components/ # Reusable React components (ProductCard, Modals, etc.)
-├── pages/ # Next.js pages and API routes
-│ ├── _app.tsx # Global App component
-│ ├── index.tsx # Home page
-│ ├── product/
-│ │ └── [id].tsx # Dynamic product detail page
-│ └── ...
-├── public/ # Static assets (images, fonts)
-├── store/ # Redux Toolkit store configuration
-│ ├── cart/
-│ │ └── cartSlice.ts # Slice for the shopping cart
-│ ├── categories/
-│ │ └── categorySlice.ts
-│ └── index.ts # Root store and reducer
-├── styles/ # Global styles
-├── interface.ts # TypeScript interfaces and types
