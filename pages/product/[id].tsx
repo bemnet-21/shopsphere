@@ -35,7 +35,7 @@ const ProductDetail = ({product} : {product: ProductDetailProps}) => {
   const cartList = useSelector((state:RootState) => state.cartState.item)
   const dispatch = useDispatch()
   const handleAddToCart = () => {
-    dispatch(addToCart({title: product.title, price: product.price, thumbnail: product.thumbnail }))
+    dispatch(addToCart({title: product.title, price: product.price, thumbnail: product.thumbnail, id:product.id }))
   }
   console.log("Cart: ", cartList)
 

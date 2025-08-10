@@ -43,4 +43,5 @@ export interface CartCardProps {
   thumbnail: string
   title: string
   price: number
+  id: number
 }
