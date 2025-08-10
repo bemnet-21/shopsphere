@@ -13,16 +13,14 @@ const CategoryModal: React.FC<ModalProps> = ({
   const [selected, setSelected] = useState<string[]>([])
   
 
-  // handles the temporary selection of the checkbox it will sustain if the "apply" button is clicked otherwise will not
   const handleChange = (value: string) => {
     setTempSelected((prev) => 
-      prev.includes(value) ? //condition: does the value exist in list?
-        prev.filter(v => v !== value) // if true remove the value (diselect)
-        : [...prev, value] //else append the value in the list of the selected values
+      prev.includes(value) ? 
+        prev.filter(v => v !== value) 
+        : [...prev, value] 
     )
   }
 
-  // executed when the "apply" button is clicked and the selection will permanent
   const handleApply = () => {
     setSelected(tempSelected)
     onClose()
@@ -31,7 +29,7 @@ const CategoryModal: React.FC<ModalProps> = ({
   if (!isVisible) return null
 
   return (
-    <div className='w-full h-full bg-darkBlue/70  absolute inset-y-40'>
+    <div className='absolute inset-x-0 top-45 rounded-2xl bg-darkBlue/70 bottom-[-100vh]'>
       <div className='bg-softBlue  mx-5 p-10 rounded-3xl flex flex-col gap-y-5'>
         <button onClick={onClose} className='cursor-pointer'>
           <FaX className='place-self-end text-xl'/>

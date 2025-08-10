@@ -1,3 +1,4 @@
+import Buy from '@/components/modal/Buy'
 import { ProductDetailProps } from '@/interface'
 import { RootState } from '@/store'
 import { addToCart } from '@/store/cart/cartSlice'
@@ -140,6 +141,7 @@ const ProductDetail = ({product} : {product: ProductDetailProps}) => {
           ))
         }
       </div>
+      <Buy />
     </section>
   )
 }
