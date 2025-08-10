@@ -59,10 +59,12 @@ const Home = () => {
     ? allproducts.filter(product => userSelectedCategory.includes(product.category))
     : allproducts;
 
+
+  const sortedProducts = [...categoryFiltered]
   if (priceOrder === 'Ascending') {
-    categoryFiltered.sort((a, z) => a.price - z.price)
+    sortedProducts.sort((a, z) => a.price - z.price)
   } else if (priceOrder == 'Descending') {
-    categoryFiltered.sort((a, z) => z.price - a.price)
+    sortedProducts.sort((a, z) => z.price - a.price)
   }
   
   if (loading) return (
@@ -80,7 +82,7 @@ const Home = () => {
       <div className='md:h-screen'>
         <section className='font-light pt-10 px-5 grid grid-cols-1 gap-4 md:pl-15 w-full md:grid-cols-2 lg:grid-cols-3  md:-z-0 '>
           {
-            categoryFiltered.map((product)=>(
+            sortedProducts.map((product)=>(
               <Link href={`/product/${product.id}`} className='md:w-fit md:h-fit'>
                 <ProductCard key={product.id}
                   id={product.id}

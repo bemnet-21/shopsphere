@@ -15,11 +15,11 @@ const priceSlice = createSlice({
         setDesc: (state, action:PayloadAction<string>) => {
             state.order = action.payload
         },
-        setNone: (state, action:PayloadAction<string>) => {
-            state.order = action.payload
+        setNone: (state) => {
+            state.order = ''
         }
     }
 })
 
-export const {setAsc, setDesc} = priceSlice.actions;
+export const {setAsc, setDesc, setNone} = priceSlice.actions;
 export default priceSlice.reducer;

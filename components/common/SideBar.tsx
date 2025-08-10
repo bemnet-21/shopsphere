@@ -1,6 +1,6 @@
 import { AppDispatch, RootState } from '@/store'
 import { addCategory } from '@/store/category/categorySlice'
-import { setAsc, setDesc } from '@/store/price/priceSlice'
+import { setAsc, setDesc, setNone } from '@/store/price/priceSlice'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { useState, useEffect } from 'react'
@@ -31,8 +31,6 @@ const SideBar = () => {
     }
 
     const handleApply = () => {
-        // setSelected(tempSelected)
-        // when applied it should dispatch the action here
         dispatch(addCategory(tempSelected))
     }
 
@@ -64,7 +62,7 @@ const SideBar = () => {
                     value=''
                     
                     className='transform scale-120 accent-mainOrange mr-2'
-                    onChange={(e) => dispatch(setAsc(e.target.value))}
+                    onChange={(e) => dispatch(setNone())}
                 />
                 Default
             </label>
