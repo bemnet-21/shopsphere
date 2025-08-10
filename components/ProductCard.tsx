@@ -32,4 +32,4 @@ const ProductCard: React.FC<ProductCardProps> = ({
   )
 }
 
-export default ProductCard
+export default React.memo(ProductCard)
