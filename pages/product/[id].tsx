@@ -92,9 +92,7 @@ const ProductDetail = ({product} : {product: ProductDetailProps}) => {
         <div className='bg-mainOrange px-4 py-1 rounded-xl w-fit text-xl'>Stock: {product.stock}</div>
       </div>
       </div>
-      <Link href='/cart'>
-        Go To Cart
-      </Link>
+     
       <div className='flex flex-col items-center w-full gap-y-3 text-xl'>
         <button className='bg-mainOrange w-9/10 py-1 rounded-xl sm:w-1/2 md:w-1/4 cursor-pointer hover:bg-amber-700 active:bg-amber-800' onClick={handleAddToCart}>Add to Cart</button>
         <button className='border border-mainOrange text-mainOrange w-9/10 py-1 rounded-xl sm:w-1/2 md:w-1/4 hover:bg-mainOrange hover:text-white active:bg-amber-800' onClick={openModal}>Buy Now</button>

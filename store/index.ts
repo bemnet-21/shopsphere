@@ -11,7 +11,7 @@ const store = configureStore({
         priceState: priceReducer,
         cartState: cartReducer,
         searchState: searchReducer,
-        modalState: modalReducer
+        modalState: modalReducer,
     }
 })
 

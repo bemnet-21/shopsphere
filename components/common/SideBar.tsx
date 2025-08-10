@@ -85,7 +85,7 @@ const SideBar = () => {
                 HIGH To LOW
             </label>
         </div>
-        <button onClick={handleApply}>apply</button>
+        <button className='bg-mainOrange rounded-xl py-1 cursor-pointer hover:bg-amber-700 active:bg-amber-800' onClick={handleApply}>Apply</button>
     </aside>
   )
 }

@@ -11,12 +11,7 @@ interface Item {
 }
 const initialState: Item = {
     item: [
-        {
-            id: 1,
-            price: 89.99,
-            title: "Essence Mascara Lash Princess",
-            thumbnail: "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp"
-        }
+        
     ]
 };
 

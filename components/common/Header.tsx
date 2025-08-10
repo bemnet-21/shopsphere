@@ -6,6 +6,8 @@ import { FaSearch } from 'react-icons/fa'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { updateSearchValue } from '@/store/search/searchSlice'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 
 
 
@@ -29,8 +31,7 @@ const Header = () => {
       <Link href='/'>
         <div className='text-4xl'>ShopSphere</div>
       </Link>
-      <button onClick={() => setmenuModalVisibilty(true)} className='display-block sm:hidden'><img src='/assets/icons/menu.png' /></button>
-      <form onSubmit={handleSearch} className='hidden relative sm:block'>
+      <form onSubmit={handleSearch} className='hidden relative md:block'>
         <input type='text'
         placeholder='Search'
         value={searchInput}
@@ -40,10 +41,12 @@ const Header = () => {
           <FaSearch className='absolute top-3 right-5 cursor-pointer'/>
         </button>
       </form>
-      <div className='hidden text-lg justify-between sm:flex sm:w-32 md:w-2/10 lg:w-36'>
-        <Link href='/cart'>Login</Link>
-        <div>Sign UP</div>
+      <button onClick={() => setmenuModalVisibilty(true)} className='display-block cursor-pointer lg:hidden'><img src='/assets/icons/menu.png' /></button>
+      <div className='hidden text-lg justify-between lg:flex lg:w-[15%]'>
+        <Link href='/'>Home</Link>
+        <Link href='/cart'>My Cart</Link>
       </div>
+    
       <MenuModal 
            isVisible={menuModalVisibilty}
            onClose={() => setmenuModalVisibilty(false)} />
