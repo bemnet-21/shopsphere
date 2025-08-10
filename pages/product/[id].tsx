@@ -40,30 +40,41 @@ const ProductDetail = ({product} : {product: ProductDetailProps}) => {
   console.log("Cart: ", cartList)
 
 
-  const images = product.images.filter((image) => image !== product.images[0])
+  const images = product.images.slice(1)
   
   return (
     <section className='flex flex-col items-center mt-16 gap-y-6 px-5 pb-12 sm:px-16 md:px-32 lg:px-64'>
       <div className='bg-mainOrange px-4 py-1 rounded-xl w-fit text-xl text-center'>{product.title}</div>
-      <div>
-        <div className='relative w-72 h-72 bg-softBlue rounded-xl border border-lightBlue'>
+      <div className='w-full grid grid-cols-2 md:grid-cols-2 gap-4'>
+      <div className='relative col-span-2 md:col-span-1 md:row-span-2 rounded-xl overflow-hidden bg-softBlue border border-lightBlue'>
+        <div className="w-full aspect-square "> 
           <Image
             src={product.images[0]}
-            alt={`${product.title} image - 1`}
+            alt={`${product.title} featured image`}
             fill
-            className='object-contain'
-            />
+            className='object-contain p-2'
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         </div>
-        {images.map((image, index) => (
-          <div className='hidden relative w-72 h-72'>
-            <Image
-              key={index}
-              src={image}
-              alt={`${product.title} image - ${index}`}
-              fill />
-          </div>
-        ))}
       </div>
+
+      {images.map((image, index) => (
+        <div 
+          key={index} 
+          className='relative col-span-1 rounded-xl overflow-hidden border border-lightBlue'
+        >
+          <div className="w-full aspect-square bg-softBlue"> 
+            <Image
+              src={image}
+              alt={`${product.title} thumbnail ${index + 2}`}
+              fill
+              className='object-contain p-2'
+              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 17vw"
+            />
+          </div>
+        </div>
+      ))}
+    </div>
       <div className='bg-softBlue flex flex-col gap-y-3 p-3.5 rounded-xl'>
         <div className='bg-mainOrange px-4 rounded-xl w-fit text-xl'>{product.brand}</div>
         <div>
