@@ -2,6 +2,7 @@ import Buy from '@/components/modal/Buy'
 import { ProductDetailProps } from '@/interface'
 import { RootState } from '@/store'
 import { addToCart } from '@/store/cart/cartSlice'
+import { setVisibility } from '@/store/modal/modalSlice'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -33,13 +34,18 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
 
 const ProductDetail = ({product} : {product: ProductDetailProps}) => {
 
-  const cartList = useSelector((state:RootState) => state.cartState.item)
   const dispatch = useDispatch()
   const handleAddToCart = () => {
     dispatch(addToCart({title: product.title, price: product.price, thumbnail: product.thumbnail, id:product.id }))
   }
-  console.log("Cart: ", cartList)
 
+  const modalVisibility = useSelector((state: RootState) => state.modalState.isVisible)
+  const onClose = () => {
+    dispatch(setVisibility(false))
+  }
+  const openModal = () => {
+    dispatch(setVisibility(true))
+  }
 
   const images = product.images.slice(1)
   
@@ -91,7 +97,7 @@ const ProductDetail = ({product} : {product: ProductDetailProps}) => {
       </Link>
       <div className='flex flex-col items-center w-full gap-y-3 text-xl'>
         <button className='bg-mainOrange w-9/10 py-1 rounded-xl sm:w-1/2 md:w-1/4 cursor-pointer hover:bg-amber-700 active:bg-amber-800' onClick={handleAddToCart}>Add to Cart</button>
-        <button className='border border-mainOrange text-mainOrange w-9/10 py-1 rounded-xl sm:w-1/2 md:w-1/4'>Buy Now</button>
+        <button className='border border-mainOrange text-mainOrange w-9/10 py-1 rounded-xl sm:w-1/2 md:w-1/4 hover:bg-mainOrange hover:text-white active:bg-amber-800' onClick={openModal}>Buy Now</button>
       </div>
       <div className='bg-softBlue flex flex-col gap-y-3 p-3.5 rounded-xl w-full'>
         <div className='bg-mainOrange px-4 rounded-xl w-fit text-xl'>More Info</div>
@@ -141,7 +147,7 @@ const ProductDetail = ({product} : {product: ProductDetailProps}) => {
           ))
         }
       </div>
-      <Buy />
+      <Buy isVisible={modalVisibility} onClose={onClose} />
     </section>
   )
 }

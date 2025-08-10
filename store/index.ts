@@ -3,13 +3,15 @@ import categoryReducer from "./category/categorySlice"
 import priceReducer from "./price/priceSlice"
 import cartReducer from './cart/cartSlice'
 import searchReducer from './search/searchSlice'
+import modalReducer from './modal/modalSlice'
 
 const store = configureStore({
     reducer: {
         categoriesState: categoryReducer,
         priceState: priceReducer,
         cartState: cartReducer,
-        searchState: searchReducer
+        searchState: searchReducer,
+        modalState: modalReducer
     }
 })
 
