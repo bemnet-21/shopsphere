@@ -14,7 +14,6 @@ const CategoryModal: React.FC<ModalProps> = ({
   const category = ["beauty", "fragrances", "furniture", "groceries", "decoration", "kitchen accessories", "laptops", "mens shirts", "mens shoes", "mens watches", "mobile accessories", "motorcycle", "skin care", "smartphones", "sports accessories", "sunglasses", "tablets", "tops", "vehicle", "womens bags", "womens dresses", "womens jewelries", "womens shoes", "womens watches"]
 
   const [tempSelected, setTempSelected] = useState<string[]>([])
-  const [selected, setSelected] = useState<string[]>([])
   const dispatch = useDispatch()
   const priceOrder = useSelector((state: RootState) => state.priceState.order)
 
@@ -29,7 +28,6 @@ const CategoryModal: React.FC<ModalProps> = ({
   }
 
   const handleApply = () => {
-    // setSelected(tempSelected)
     dispatch(addCategory(tempSelected))
     onClose()
   }
@@ -66,7 +64,7 @@ const CategoryModal: React.FC<ModalProps> = ({
                 value=''
                 checked={priceOrder === ''}
                 className='transform scale-120 accent-mainOrange mr-2'
-                onChange={(e) => dispatch(setNone())}
+                onChange={() => dispatch(setNone())}
               />
                 Default
             </label>

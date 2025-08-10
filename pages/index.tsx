@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { ProductProps } from '@/interface'
 import ProductCard from '@/components/ProductCard'
 import CategoryModal from '@/components/modal/CategoryModal'
-import MenuModal from '@/components/modal/MenuModal'
 import Link from 'next/link'
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi'
 import { useSelector } from 'react-redux'
@@ -73,9 +72,8 @@ const Home = () => {
   } else if (priceOrder == 'Descending') {
     sortedProducts.sort((a, z) => z.price - a.price)
   }
-  interface HandleSearchEvent extends React.FormEvent<HTMLFormElement> {}
 
-  const handleSearch = (e: HandleSearchEvent): void => {
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
     dispatch(updateSearchValue(searchInput))
     router.push('/search-result')
@@ -109,7 +107,7 @@ const Home = () => {
         <section className='font-light pt-10 px-5 grid grid-cols-1 gap-4 md:pl-15 w-full md:grid-cols-2 lg:grid-cols-3  md:-z-0 '>
           {
             sortedProducts.map((product)=>(
-              <Link href={`/product/${product.id}`} className='md:w-fit md:h-fit'>
+              <Link href={`/product/${product.id}`} key={product.id} className='md:w-fit md:h-fit'>
                 <ProductCard key={product.id}
                   id={product.id}
                   title={product.title}

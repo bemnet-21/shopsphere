@@ -9,7 +9,6 @@ const MenuModal: React.FC<ModalProps> = ({
   onClose
 }) => {
 
-  interface HandleEvent extends React.FormEvent<HTMLFormElement> {}
   
   const router = useRouter()
   const handleNav = (nav: string) => {

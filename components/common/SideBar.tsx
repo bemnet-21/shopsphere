@@ -1,4 +1,4 @@
-import { AppDispatch, RootState } from '@/store'
+import { RootState } from '@/store'
 import { addCategory } from '@/store/category/categorySlice'
 import { setAsc, setDesc, setNone } from '@/store/price/priceSlice'
 import { useRouter } from 'next/router'
@@ -11,7 +11,6 @@ import { useSelector } from 'react-redux'
 const SideBar = () => {
     const router = useRouter()
     const selectedState = useSelector((state: RootState) => state.categoriesState.selected)
-    const priceOrder = useSelector((state: RootState) => state.priceState.order)
     const dispatch = useDispatch()
 
     const [tempSelected, setTempSelected] = useState<string[]>([])
@@ -62,7 +61,7 @@ const SideBar = () => {
                     value=''
                     
                     className='transform scale-120 accent-mainOrange mr-2'
-                    onChange={(e) => dispatch(setNone())}
+                    onChange={() => dispatch(setNone())}
                 />
                 Default
             </label>

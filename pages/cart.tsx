@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 
 
 
-const cart = () => {
+const Cart: React.FC = () => {
   const cartList = useSelector((state: RootState) => state.cartState.item)
   const totalPrice = cartList.reduce((count, product) => count + product.price, 0)
   console.log(cartList)
@@ -36,4 +36,4 @@ const cart = () => {
   
 }
 
-export default cart
+export default Cart

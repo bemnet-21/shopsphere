@@ -5,7 +5,7 @@ import Link from 'next/link'
 import ProductCard from '@/components/ProductCard'
 import { ProductCardProps } from '@/interface'
 
-const search = () => {
+const Search: React.FC = () => {
   const searchValue = useSelector((state: RootState) => state.searchState.value)
   const [loading, setLoading] = useState(false)
   const [products, setProducts] = useState<ProductCardProps[]>([])
@@ -36,7 +36,7 @@ const search = () => {
       <section className='font-light pt-10 px-5 grid grid-cols-1 gap-4 md:pl-15 w-full md:grid-cols-2 lg:grid-cols-3  md:-z-0 '>
         {
           products.map((product) => (
-            <Link href={`/product/${product.id}`} className='md:w-fit md:h-fit'>
+            <Link key={product.id} href={`/product/${product.id}`} className='md:w-fit md:h-fit'>
                 <ProductCard key={product.id}
                    id={product.id}
                    title={product.title}
@@ -57,4 +57,4 @@ const search = () => {
   }
 }
 
-export default search
+export default Search

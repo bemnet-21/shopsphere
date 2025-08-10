@@ -4,13 +4,11 @@ import { RootState } from '@/store'
 import { addToCart } from '@/store/cart/cartSlice'
 import { setVisibility } from '@/store/modal/modalSlice'
 import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
 import { FaStar } from 'react-icons/fa6'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 
-const total = 194
 export async function getStaticPaths() {
   const response = await fetch('https://dummyjson.com/products?limit=194')
   const data = await response.json()
@@ -124,7 +122,7 @@ const ProductDetail = ({product} : {product: ProductDetailProps}) => {
         </div>
         {
           product.reviews.map((review, index) => (
-            <div className='flex border-t border-lightBlue pt-2 gap-x-3'>
+            <div key={index} className='flex border-t border-lightBlue pt-2 gap-x-3'>
               <div className='relative w-16 h-16'>
                 <Image
                   key={index}

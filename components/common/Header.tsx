@@ -6,8 +6,6 @@ import { FaSearch } from 'react-icons/fa'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { updateSearchValue } from '@/store/search/searchSlice'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/store'
 
 
 
@@ -17,9 +15,8 @@ const Header = () => {
   const router = useRouter()
   const dispatch = useDispatch()
 
-  interface SearchEvent extends React.FormEvent<HTMLFormElement> {}
 
-  const handleSearch = (e: SearchEvent): void => {
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
     dispatch(updateSearchValue(searchInput))
     router.push('/search-result')
@@ -41,7 +38,7 @@ const Header = () => {
           <FaSearch className='absolute top-3 right-5 cursor-pointer'/>
         </button>
       </form>
-      <button onClick={() => setmenuModalVisibilty(true)} className='display-block cursor-pointer lg:hidden'><img src='/assets/icons/menu.png' /></button>
+      <button onClick={() => setmenuModalVisibilty(true)} className='display-block cursor-pointer lg:hidden'><img src='/assets/icons/menu.png' alt='menu'/></button>
       <div className='hidden text-lg justify-between lg:flex lg:w-[15%]'>
         <Link href='/'>Home</Link>
         <Link href='/cart'>My Cart</Link>

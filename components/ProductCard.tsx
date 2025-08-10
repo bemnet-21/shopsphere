@@ -3,7 +3,6 @@ import Image from 'next/image'
 import React from 'react'
 
 const ProductCard: React.FC<ProductCardProps> = ({
-    id,
     title,
     category,
     price,
