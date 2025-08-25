@@ -1,17 +1,32 @@
 import React from 'react'
 import { FaX } from 'react-icons/fa6'
-import { ModalProps } from '@/interface'
+import { BuyModalProps } from '@/interface'
+import { useDispatch } from 'react-redux'
+import { removeAll, removeFromCart } from '@/store/cart/cartSlice'
 
-const Buy: React.FC<ModalProps> = ({
+const Buy: React.FC<BuyModalProps> = ({
   isVisible,
-  onClose
+  onClose,
+  src,
+  id
 }) => {
+  const dispatch = useDispatch()
 
-  const handleSubmit = () => {
+  const handleSubmit = (src==='card') ? () => {
     alert('Order Confirmed!! Payment will be on Delivery')
+    if (typeof id === 'number') {
+      dispatch(removeFromCart(id))
+    }
     onClose()
-
+  }  : () => {
+    alert('Order Confirmed!! Payment will be on Delivery')
+    dispatch(removeAll())
   }
+  // const handleSubmit = () => {
+  //   alert('Order Confirmed!! Payment will be on Delivery')
+  //   onClose()
+
+  // }
 
   if(!isVisible) return null;
   return (

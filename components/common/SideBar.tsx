@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux'
 const SideBar = () => {
     const router = useRouter()
     const selectedState = useSelector((state: RootState) => state.categoriesState.selected)
+    const priceOrder = useSelector((state: RootState) => state.priceState.order)
     const dispatch = useDispatch()
 
     const [tempSelected, setTempSelected] = useState<string[]>([])
@@ -67,7 +68,7 @@ const SideBar = () => {
                     value=''
                     id='radio-button-default'
                     className='appearance-none w-4 h-4 rounded-lg border-1 border-mainOrange'
-                    // className='transform scale-120 accent-mainOrange mr-2'
+                    checked={priceOrder === ''}
                     onChange={() => dispatch(setNone())}
                 />
                 <div>Default</div>
@@ -79,6 +80,7 @@ const SideBar = () => {
                     name='price'
                     value='Ascending'
                     className='appearance-none w-4 h-4 rounded-lg border-1 border-mainOrange'
+                    checked={priceOrder === 'Ascending'}
                     onChange={(e) => dispatch(setAsc(e.target.value))}
                 />
                 LOW To HIGH
@@ -89,6 +91,7 @@ const SideBar = () => {
                 name='price'
                 value='Descending'
                 className='appearance-none w-4 h-4 rounded-lg border-1 border-mainOrange'
+                checked={priceOrder === 'Descending'}
                 onChange={(e) => dispatch(setDesc(e.target.value))} />
                 <div>HIGH To LOW</div>
             </label>

@@ -45,3 +45,10 @@ export interface CartCardProps {
   price: number
   id: number
 }
+
+export interface BuyModalProps {
+  isVisible: boolean
+  onClose: () => void
+  id?: number
+  src: string
+}

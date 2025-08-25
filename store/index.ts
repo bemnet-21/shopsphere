@@ -4,6 +4,7 @@ import priceReducer from "./price/priceSlice"
 import cartReducer from './cart/cartSlice'
 import searchReducer from './search/searchSlice'
 import modalReducer from './modal/modalSlice'
+import buyModalReducer from './modal/buyModalSlice'
 
 const store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
         cartState: cartReducer,
         searchState: searchReducer,
         modalState: modalReducer,
+        buyModalState: buyModalReducer
     }
 })
 

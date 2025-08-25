@@ -1,6 +1,10 @@
 import CartCard from '@/components/CartCard'
+import Buy from '@/components/modal/Buy'
 import { RootState } from '@/store'
+import { removeAll } from '@/store/cart/cartSlice'
+import { setVisibility } from '@/store/modal/modalSlice'
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 
 
@@ -10,7 +14,19 @@ import { useSelector } from 'react-redux'
 const Cart: React.FC = () => {
   const cartList = useSelector((state: RootState) => state.cartState.item)
   const totalPrice = cartList.reduce((count, product) => count + product.price, 0)
+  const modalVisibility = useSelector((state: RootState) => state.modalState.isVisible)
   console.log(cartList)
+  const dispatch = useDispatch()
+
+  const openModal = () => {
+    dispatch(setVisibility(true))
+  }
+  const onClose = () => {
+    dispatch(setVisibility(false))
+  }
+  const handleBuyAll = () => {
+    dispatch(removeAll())
+  }
   
 
   if (cartList.length === 0) return <section className='w-full h-screen flex items-center justify-center'>No Products in your Cart</section>
@@ -30,7 +46,8 @@ const Cart: React.FC = () => {
           <div>Total</div>
           <div>${totalPrice.toFixed(2)}</div>
         </div>
-        <button className='bg-mainOrange w-sm py-2 text-3xl rounded-2xl mt-12 md:w-sm md:mx-auto md:text-3xl md:py-2 cursor-pointer hover:bg-amber-700 active:bg-amber-800'>Buy All</button>
+        <button className='bg-mainOrange w-sm py-2 text-3xl rounded-2xl mt-12 md:w-sm md:mx-auto md:text-3xl md:py-2 cursor-pointer hover:bg-amber-700 active:bg-amber-800' onClick={openModal}>Buy All</button>
+        <Buy isVisible={modalVisibility} onClose={onClose} src='All'/>
     </section>
   )
   
