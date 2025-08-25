@@ -1,40 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# ShopSphere - Modern E-commerce Frontend
 
-## Getting Started
 
-First, run the development server:
+A feature-rich, performant, and fully responsive e-commerce front-end built with a modern technology stack. This project showcases a seamless user experience for browsing, filtering, searching, and managing products in a shopping cart.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Live Demo:** [**https://shopsphere-t4rg.vercel.app/**](https://shopsphere-t4rg.vercel.app/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 🚀 Key Features
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+-   **Dynamic Product Catalog:** Fetches and displays products from a live API with pagination.
+-   **Advanced Filtering & Sorting:**
+    -   Filter products by category.
+    -   Sort products by price (Low to High & High to Low).
+-   **Real-time Search:** Instantly search for products across the entire catalog.
+-   **Interactive Shopping Cart:** Add, remove, and manage product quantities with state managed by Redux.
+-   **Responsive Design:** A mobile-first approach ensures a seamless experience on all devices, from small phones to large desktops.
+-   **Client-Side Routing:** Fast and smooth navigation between pages, powered by Next.js.
+-   **Modal System:** Clean and reusable modal components for filters and other interactions.
+-   **Loading & Error States:** Provides clear user feedback during API requests and handles potential errors gracefully.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Technology Stack
 
-## Learn More
+This project leverages a modern, powerful stack for a high-quality development and user experience:
 
-To learn more about Next.js, take a look at the following resources:
+-   **Framework:** [**Next.js**](https://nextjs.org/) (with React 18)
+-   **Language:** [**TypeScript**](https://www.typescriptlang.org/)
+-   **State Management:** [**Redux Toolkit**](https://redux-toolkit.js.org/)
+-   **Styling:** [**Tailwind CSS**](https://tailwindcss.com/)
+-   **API:** [**DummyJSON**](https://dummyjson.com/) for product data.
+-   **Icons:** [**React Icons**](https://react-icons.github.io/react-icons/)
+-   **Deployment:** [**Vercel**](https://vercel.com/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🧠 Core Concepts & Challenges
 
-## Deploy on Vercel
+This project was an opportunity to implement and solve common challenges in front-end development.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 1. Centralized State Management with Redux Toolkit
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Managing state for the shopping cart, product filters, and search functionality required a robust solution. Redux Toolkit was chosen for its simplicity and scalability.
+
+-   **Slices:** State is organized into logical slices (`cartSlice`, `categorySlice`, `priceSlice`, `searchSlice`), making it easy to manage and debug.
+-   **Selectors:** Components use `useSelector` to efficiently access the necessary pieces of state, triggering re-renders only when relevant data changes.
+-   **Actions & Reducers:** User interactions dispatch actions that are handled by reducers to update the state immutably.
+
+## ⚙️ Getting Started
+
+To run this project locally, follow these steps:
+
+### Prerequisites
+
+-   Node.js (v18 or later recommended)
+-   npm, yarn, or pnpm
+
+### Installation & Setup
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/your-repo-name.git
+    cd your-repo-name
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    # or
+    pnpm install
+    ```
+
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    # or
+    pnpm dev
+    ```
+
+4.  **Open your browser:**
+    Navigate to [http://localhost:3000](http://localhost:3000) to see the application in action.
+
