@@ -9,10 +9,10 @@
   --color-lightBlue: #374151;
   --font-poppins: "Poppins";
   --font-playfair: "Playfair Display";
-  --breakpoint-sm: 550px;
+  --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
-  --breakpoint-lg: 900px;
-  --breakpoint-xl: 1200px;
+  --breakpoint-lg: 1200px;
+  --breakpoint-xl: 1440px;
 }
 body {
   background-color: var(--color-darkBlue);
@@ -28,16 +28,25 @@ body {
   display: none; /* Chrome, Safari, Opera */
 }
 .scrollbar-container::-webkit-scrollbar {
-  width: 8px;
-  /* Note: background-color on the main scrollbar element often has
-     no visible effect. It's better to style the track instead. */
+  width: 4px;
+  
 }
 
-/* 
-  2. Style the track (the background the thumb slides on)
-     The selector is ".scrollbar-container ::-webkit-scrollbar-track"
-*/
 .scrollbar-container::-webkit-scrollbar-track {
-  background: var(--color-lightBlue); /* e.g., a light blue color */
+  /* background: var(--color-lightBlue);  */
   border-radius: 4px; /* It's better to round the track and thumb */
+}
+.scrollbar-container::-webkit-scrollbar-thumb {
+  background-color: var(--color-lightBlue);
+  border-radius: 4px;
+}
+
+#check-box-1:checked ~ .check-1{
+  @apply opacity-100
+}
+#check-box-1:checked {
+  @apply bg-mainOrange
+}
+#radio-button-default:checked, #radio-button-desc:checked, #radio-button-asec:checked {
+  @apply bg-mainOrange
 }

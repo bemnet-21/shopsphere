@@ -104,7 +104,7 @@ const Home = () => {
       </form>
     </div>
       <div className='md:h-screen'>
-        <section className='font-light pt-10 px-5 grid grid-cols-1 gap-4 md:pl-15 w-full md:grid-cols-2  md:-z-0 '>
+        <section className='font-light pt-10 px-5 grid grid-cols-1 gap-4 md:pl-15 w-full md:grid-cols-2 md:-z-0 lg:grid-cols-3'>
           {
             sortedProducts.map((product)=>(
               <Link href={`/product/${product.id}`} key={product.id} className='md:w-fit md:h-fit'>
