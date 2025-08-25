@@ -50,5 +50,5 @@ export interface BuyModalProps {
   isVisible: boolean
   onClose: () => void
   id?: number
-  src: string
+  src?: string
 }

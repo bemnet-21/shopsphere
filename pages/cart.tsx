@@ -24,9 +24,9 @@ const Cart: React.FC = () => {
   const onClose = () => {
     dispatch(setVisibility(false))
   }
-  const handleBuyAll = () => {
-    dispatch(removeAll())
-  }
+  // const handleBuyAll = () => {
+  //   dispatch(removeAll())
+  // }
   
 
   if (cartList.length === 0) return <section className='w-full h-screen flex items-center justify-center'>No Products in your Cart</section>

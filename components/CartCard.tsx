@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import Buy from './modal/Buy'
-import { setVisibility } from '@/store/modal/modalSlice'
+// import { setVisibility } from '@/store/modal/modalSlice'
 import { closeBuyModal, openBuyModal } from '@/store/modal/buyModalSlice'
 
 const CartCard: React.FC<CartCardProps> = ({
@@ -16,7 +16,7 @@ const CartCard: React.FC<CartCardProps> = ({
     price,
     id
 }) => {
-  const modalVisibility = useSelector((state: RootState) => state.modalState.isVisible)
+  // const modalVisibility = useSelector((state: RootState) => state.modalState.isVisible)
   const productIdForModal = useSelector((state: RootState) => state.buyModalState.productId)
   const dispatch = useDispatch()
   const handleRemove = () => {
@@ -30,9 +30,9 @@ const CartCard: React.FC<CartCardProps> = ({
     // dispatch(setVisibility(true))
     dispatch(openBuyModal(id))
   }
-  const handleBuyNow = () => {
-    dispatch(openBuyModal(id))
-  }
+  // const handleBuyNow = () => {
+  //   dispatch(openBuyModal(id))
+  // }
 
   return (
 
