@@ -105,7 +105,7 @@ const Home = () => {
     </div>
       <div className='md:h-screen'>
         <div className='container mx-auto'>
-          <section className='font-light pt-10 px-5 grid grid-cols-1 border border-amber-500 gap-4 w-full md:grid-cols-2 md:-z-0 xmd:grid-cols-3 md:pl-15 xmd:pl-6'>
+          <section className='font-light pt-10 px-5 grid grid-cols-1 gap-4 w-full md:grid-cols-2 md:-z-0 xmd:grid-cols-3 md:pl-15 xmd:pl-6'>
             {
               sortedProducts.map((product)=>(
                 <Link href={`/product/${product.id}`} key={product.id} className='md:w-fit md:h-fit'>
