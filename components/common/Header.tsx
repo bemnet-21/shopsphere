@@ -38,8 +38,8 @@ const Header = () => {
           <FaSearch className='absolute top-3 right-5 cursor-pointer'/>
         </button>
       </form>
-      <button onClick={() => setmenuModalVisibilty(true)} className='display-block cursor-pointer lg:hidden'><img src='/assets/icons/menu.png' alt='menu'/></button>
-      <div className='hidden text-lg justify-between lg:flex lg:w-[15%]'>
+      <button onClick={() => setmenuModalVisibilty(true)} className='display-block cursor-pointer xmd:hidden'><img src='/assets/icons/menu.png' alt='menu'/></button>
+      <div className='hidden text-lg justify-between xmd:flex xmd:w-[15%]'>
         <Link href='/'>Home</Link>
         <Link href='/cart'>My Cart</Link>
       </div>
