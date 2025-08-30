@@ -104,22 +104,24 @@ const Home = () => {
       </form>
     </div>
       <div className='md:h-screen'>
-        <section className='font-light pt-10 px-5 grid grid-cols-1 gap-4 md:pl-15 w-full md:grid-cols-2 md:-z-0 lg:grid-cols-3'>
-          {
-            sortedProducts.map((product)=>(
-              <Link href={`/product/${product.id}`} key={product.id} className='md:w-fit md:h-fit'>
-                <ProductCard key={product.id}
-                  id={product.id}
-                  title={product.title}
-                  thumbnail={product.thumbnail}
-                  stock={product.stock}
-                  price={product.price}
-                  category={product.category}
-                  rating={product.rating} />
-              </Link>
-            ))
-          }
-        </section>
+        <div className='container mx-auto'>
+          <section className='font-light pt-10 px-5 grid grid-cols-1 border border-amber-500 gap-4 w-full md:grid-cols-2 md:-z-0 xmd:grid-cols-3 md:pl-15 xmd:pl-6'>
+            {
+              sortedProducts.map((product)=>(
+                <Link href={`/product/${product.id}`} key={product.id} className='md:w-fit md:h-fit'>
+                  <ProductCard key={product.id}
+                    id={product.id}
+                    title={product.title}
+                    thumbnail={product.thumbnail}
+                    stock={product.stock}
+                    price={product.price}
+                    category={product.category}
+                    rating={product.rating} />
+                </Link>
+              ))
+            }
+          </section>
+        </div>
         <div className='flex gap-x-4 items-center place-self-center py-10'>
           <BiChevronLeft className='text-4xl cursor-pointer hover:bg-lightBlue hover:rounded-full' onClick={handlePrev}/>
           <span>

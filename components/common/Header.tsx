@@ -28,7 +28,7 @@ const Header = () => {
       <Link href='/'>
         <div className='text-4xl'>ShopSphere</div>
       </Link>
-      <form onSubmit={handleSearch} className='hidden relative md:block'>
+      <form onSubmit={handleSearch} className='hidden relative lg:block'>
         <input type='text'
         placeholder='Search'
         value={searchInput}
